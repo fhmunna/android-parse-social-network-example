@@ -6,13 +6,30 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
+
+import java.util.List;
 
 public class LogoutActivity extends AppCompatActivity {
+    TextView textView_username;
+    TextView textView_password;
+    Button update_button;
+
+    String fName, lName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +37,60 @@ public class LogoutActivity extends AppCompatActivity {
         Parse.initialize(this);
         setContentView(R.layout.activity_logout);
 
+
+        textView_username = (TextView) findViewById(R.id.textView_username);
+        textView_password = (TextView) findViewById(R.id.textView_password);
+
+
+        final ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            // do stuff with the user
+            textView_username.setText(currentUser.getUsername());
+            textView_password.setText(currentUser.getObjectId());
+
+        } else {
+            // show the signup or login screen
+        }
+
+
+//        update_button = (Button) findViewById(R.id.update_button);
+
+    /*    update_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                fName = et_first_name.getText().toString();
+                lName = et_last_name.getText().toString();
+
+
+                ParseQuery<ParseUser> query = ParseUser.getQuery();
+//                query.whereEqualTo("username",currentUser.getUsername());
+                query.getInBackground(currentUser.getObjectId(), new GetCallback<ParseUser>() {
+                    @Override
+                    public void done(ParseUser object, ParseException e) {
+
+                        if (e == null) {
+                            object.put("firstName", fName);
+                            object.put("lastName", lName);
+                            object.saveInBackground();
+
+                            Log.d("size ", "Ok");
+                        } else {
+
+                            Log.d("size ", String.valueOf(e));
+                            e.printStackTrace();
+
+
+                        }
+
+
+                    }
+                });
+
+
+            }
+        });
+*/
 
         final Button logout_button = findViewById(R.id.logout_button);
         logout_button.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +110,7 @@ public class LogoutActivity extends AppCompatActivity {
         });
     }
 
-    private void alertDisplayer(String title,String message){
+    private void alertDisplayer(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(LogoutActivity.this)
                 .setTitle(title)
                 .setMessage(message)

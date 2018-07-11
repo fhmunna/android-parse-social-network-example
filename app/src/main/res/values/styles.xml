@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TimePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/toolbar_color</item>
+        <item name="colorControlNormal">@color/orange</item>
+    </style>
+
 </resources>

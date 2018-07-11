@@ -19,6 +19,19 @@
         tools:layout_alignParentStart="true" >
 
         <TextView
+            android:id="@+id/textView012"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Welcome to my app!"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="18sp"
+            android:textColor="@color/Black" />
+
+
+
+
+        <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,6 +40,37 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="18sp"
             android:textColor="@color/Black" />
+
+
+
+        <TextView
+            android:id="@+id/textView_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Welcome to my app!"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="18sp"
+            android:textColor="@color/Black" />
+
+
+
+        <TextView
+            android:id="@+id/textView_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Welcome to my app!"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="18sp"
+            android:textColor="@color/Black" />
+
+
+
+
+
+
+
 
         <Button
             android:id="@+id/logout_button"
