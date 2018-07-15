@@ -66,13 +66,20 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void done(ParseUser parseUser, ParseException e) {
                         if (parseUser != null) {
-                            dlg.dismiss();
-                            alertDisplayer("Sucessful Login","Welcome back " + usernameView.getText().toString() + "!");
-
+                            if(parseUser.getBoolean("emailVerified")) {
+                                dlg.dismiss();
+                                alertDisplayer("Login Sucessful", "Welcome, " + parseUser.getUsername().toString() + "!", false);
+                            }
+                            else
+                            {
+                                ParseUser.logOut();
+                                dlg.dismiss();
+                                alertDisplayer("Login Fail", "Please Verify Your Email first", true);
+                            }
                         } else {
-                            dlg.dismiss();
                             ParseUser.logOut();
-                            Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            dlg.dismiss();
+                            alertDisplayer("Login Fail", e.getMessage() + " Please re-try", true);
                         }
                     }
                 });
@@ -98,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void alertDisplayer(String title,String message){
+    private void alertDisplayer(String title,String message, final boolean error){
         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this)
                 .setTitle(title)
                 .setMessage(message)
@@ -106,12 +113,15 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        Intent intent = new Intent(LoginActivity.this, LogoutActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+                        if(!error) {
+                            Intent intent = new Intent(LoginActivity.this, LogoutActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
                     }
                 });
         AlertDialog ok = builder.create();
         ok.show();
     }
+
 }

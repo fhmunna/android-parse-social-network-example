@@ -157,16 +157,15 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                     public void done(ParseException e) {
                         if (e == null) {
                             dlg.dismiss();
-                            alertDisplayer("Sucessful Login", "Welcome " + usernameView.getText().toString() + "!");
-
-
+                            alertDisplayer("Account Created Successfully!", "Please verify your email before Login", false);
                             saveAditional();
 
 
                         } else {
                             dlg.dismiss();
                             ParseUser.logOut();
-                            Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+//                            Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            alertDisplayer("Error Account Creation failed", "Account could not be created" + " :" + e.getMessage(), true);
                         }
                     }
                 });
@@ -191,7 +190,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         }
     }
 
-    private void alertDisplayer(String title, String message) {
+/*    private void alertDisplayer(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this)
                 .setTitle(title)
                 .setMessage(message)
@@ -206,8 +205,25 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 });
         AlertDialog ok = builder.create();
         ok.show();
-    }
-
+    }*/
+private void alertDisplayer(String title,String message, final boolean error){
+    AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                    if(!error) {
+                        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+                }
+            });
+    AlertDialog ok = builder.create();
+    ok.show();
+}
 
     private void saveAditional() {
 
