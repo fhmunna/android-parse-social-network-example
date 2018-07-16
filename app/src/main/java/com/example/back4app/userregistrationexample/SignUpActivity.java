@@ -220,8 +220,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
             public void done(ParseUser object, ParseException e) {
 
                 if (e == null) {
-
-
                     object.put("firstName", et_first_name.getText().toString());
                     object.put("lastName", et_last_name.getText().toString());
                     object.put("gender", gender_value);

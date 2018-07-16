@@ -27,8 +27,6 @@ TextView location;
 
 
 
-
-
     }
 
 

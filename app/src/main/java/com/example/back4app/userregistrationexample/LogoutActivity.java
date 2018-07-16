@@ -40,7 +40,8 @@ public class LogoutActivity extends AppCompatActivity {
 
         textView_username = (TextView) findViewById(R.id.textView_username);
         textView_password = (TextView) findViewById(R.id.textView_password);
-
+//        et_first_name = (EditText) findViewById(R.id.et_first_name);
+//        et_last_name = (EditText) findViewById(R.id.et_last_name);
 
         final ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {

@@ -307,6 +307,31 @@
                    android:maxLines="1"
                    android:singleLine="true" />
 
+
+
+
+               <TextView
+                   android:id="@+id/textView330"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Industry"
+                   android:textColor="@color/Black" />
+
+               <EditText
+                   android:id="@+id/industry"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+
+                   android:maxLines="1"
+                   android:singleLine="true" />
+
+
+
+
+
+
+
+
                <TextView
                    android:id="@+id/textView33"
                    android:layout_width="wrap_content"

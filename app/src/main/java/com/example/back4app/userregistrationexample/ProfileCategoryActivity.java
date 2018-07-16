@@ -32,7 +32,7 @@ public class ProfileCategoryActivity extends AppCompatActivity {
     boolean currentJobStatus = true;
     boolean currentInstitutionStatus = true;
 
-    int  targetId;
+    int targetId;
 
 
     private int yearPatient, monthPatient, dayPatient;
@@ -41,12 +41,10 @@ public class ProfileCategoryActivity extends AppCompatActivity {
     boolean flagForCheckDate = false, flagForCurrentday = false, flagForDatePick = false;
 
 
-
-
-
     boolean result;
     EditText companyName;
     EditText title;
+    EditText industry;
     EditText location;
     EditText jobstartingDate;
     CheckBox isCurrentJob;
@@ -54,7 +52,6 @@ public class ProfileCategoryActivity extends AppCompatActivity {
     EditText jobdescription;
 
     Button profile_category_save_button_job;
-
 
 
     EditText institutionName;
@@ -76,6 +73,7 @@ public class ProfileCategoryActivity extends AppCompatActivity {
     LinearLayout jobendingLayout;
 
     Boolean switchState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,10 +87,9 @@ public class ProfileCategoryActivity extends AppCompatActivity {
         dayPatient = mCalendarForAge.get(Calendar.DAY_OF_MONTH);
 
 
-
-
         companyName = (EditText) findViewById(R.id.companyName);
         title = (EditText) findViewById(R.id.title);
+        industry = (EditText) findViewById(R.id.industry);
         location = (EditText) findViewById(R.id.location);
         jobstartingDate = (EditText) findViewById(R.id.jobstartingDate);
         isCurrentJob = (CheckBox) findViewById(R.id.isCurrentJob);
@@ -102,10 +99,6 @@ public class ProfileCategoryActivity extends AppCompatActivity {
         profile_category_save_button_job = (Button) findViewById(R.id.profile_category_save_button_job);
 
 
-
-
-
-
         institutionName = (EditText) findViewById(R.id.institutionName);
         degree = (EditText) findViewById(R.id.degree);
         fieldOfStudy = (EditText) findViewById(R.id.fieldOfStudy);
@@ -113,8 +106,6 @@ public class ProfileCategoryActivity extends AppCompatActivity {
         isCurrent = (CheckBox) findViewById(R.id.isCurrent);
         endingDate = (EditText) findViewById(R.id.endingDate);
         description = (EditText) findViewById(R.id.description);
-
-
 
 
         profile_category_save_button = (Button) findViewById(R.id.profile_category_save_button);
@@ -131,9 +122,6 @@ public class ProfileCategoryActivity extends AppCompatActivity {
         jobendingLayout = (LinearLayout) findViewById(R.id.jobendingLayout);
 
 
-
-
-
         profile_category_save_button_job.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,12 +132,13 @@ public class ProfileCategoryActivity extends AppCompatActivity {
                     experience.put("userId", currentUser.getObjectId());
                     experience.put("companyName", companyName.getText().toString());
                     experience.put("title", title.getText().toString());
+                    experience.put("industry", industry.getText().toString());
                     experience.put("location", location.getText().toString());
                     experience.put("jobstartingDate", jobstartingDate.getText().toString());
-                    if (currentJobStatus){
+                    if (currentJobStatus) {
                         experience.put("isCurrentJob", "1");
                         experience.put("jobendingDate", "0");
-                    }else{
+                    } else {
                         experience.put("isCurrentJob", "0");
                         experience.put("jobendingDate", jobendingDate.getText().toString());
                     }
@@ -160,38 +149,22 @@ public class ProfileCategoryActivity extends AppCompatActivity {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
-
                                 Intent intent = new Intent(ProfileCategoryActivity.this, Locationactivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-
                             }
                         }
                     });
-
                 } else {
-
                     Log.d("CAT", "user category key error");
-
                 }
-
-
             }
         });
-
-
-
-
-
-
-
-
 
 
         profile_category_save_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (updateUserCategory(1)) {
                     final ParseUser currentUser = ParseUser.getCurrentUser();
                     ParseObject education = new ParseObject("Education");
@@ -200,10 +173,10 @@ public class ProfileCategoryActivity extends AppCompatActivity {
                     education.put("degree", degree.getText().toString());
                     education.put("fieldOfStudy", fieldOfStudy.getText().toString());
                     education.put("startingDate", startingDate.getText().toString());
-                    if (currentInstitutionStatus){
+                    if (currentInstitutionStatus) {
                         education.put("isCurrent", "1");
                         education.put("endingDate", "0");
-                    }else{
+                    } else {
                         education.put("isCurrent", "0");
                         education.put("endingDate", endingDate.getText().toString());
                     }
@@ -212,7 +185,6 @@ public class ProfileCategoryActivity extends AppCompatActivity {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
-
                                 Intent intent = new Intent(ProfileCategoryActivity.this, Locationactivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
@@ -222,15 +194,10 @@ public class ProfileCategoryActivity extends AppCompatActivity {
                     });
 
                 } else {
-
                     Log.d("CAT", "user category key error");
-
                 }
-
-
             }
         });
-
 
         simpleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -246,18 +213,10 @@ public class ProfileCategoryActivity extends AppCompatActivity {
                     simpleSwitch.setText("I am student");
                     studentLayout.setVisibility(View.VISIBLE);
                     employeeLayout.setVisibility(View.GONE);
-
                     switchState = false;
-
                 }
-
-
             }
         });
-
-
-
-
 
 
         isCurrent.setOnClickListener(new View.OnClickListener() {
@@ -265,12 +224,11 @@ public class ProfileCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                if(isCurrent.isChecked()){
+                if (isCurrent.isChecked()) {
 //                    System.out.println("Checked");
                     institutionendingLayout.setVisibility(View.GONE);
                     currentInstitutionStatus = true;
-
-                }else{
+                } else {
                     currentInstitutionStatus = false;
                     institutionendingLayout.setVisibility(View.VISIBLE);
 //                    System.out.println("Un-Checked");
@@ -284,22 +242,18 @@ public class ProfileCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                if(isCurrentJob.isChecked()){
+                if (isCurrentJob.isChecked()) {
 //                    System.out.println("Checked");
                     jobendingLayout.setVisibility(View.GONE);
                     currentJobStatus = true;
 
-                }else{
+                } else {
                     currentJobStatus = false;
                     jobendingLayout.setVisibility(View.VISIBLE);
 //                    System.out.println("Un-Checked");
                 }
             }
         });
-
-
-
-
 
 
     }
@@ -350,8 +304,6 @@ public class ProfileCategoryActivity extends AppCompatActivity {
 
 
     }
-
-
 
 
     @SuppressWarnings("deprecation")
@@ -418,15 +370,14 @@ public class ProfileCategoryActivity extends AppCompatActivity {
             };
 
 
-
     /**
      * Check Valid date when from pick calendar
-     * @param   year means you pick from calendar that year
-     * @param   month means you pick from calendar that month
-     * @param   day means you pick from calendar that day
      *
-     * */
-    public void checkValidDate(int year, int month, int day){
+     * @param year  means you pick from calendar that year
+     * @param month means you pick from calendar that month
+     * @param day   means you pick from calendar that day
+     */
+    public void checkValidDate(int year, int month, int day) {
 
         Calendar checkValidDate = Calendar.getInstance();
         if (checkValidDate.get(Calendar.YEAR) == year) {
@@ -452,8 +403,7 @@ public class ProfileCategoryActivity extends AppCompatActivity {
                     flagForCheckDate = false;
                 }
 
-            }
-            else if (checkValidDate.get(Calendar.MONTH) + 1 > month + 1){
+            } else if (checkValidDate.get(Calendar.MONTH) + 1 > month + 1) {
                 // selected month is small from current month
                 flagForCheckDate = false;
             }
@@ -469,7 +419,7 @@ public class ProfileCategoryActivity extends AppCompatActivity {
 
     /**
      * Show birth date in the edit text field
-     * */
+     */
     private void showDate(int year, int month, int day) {
 
         EditText et_dob = (EditText) findViewById(targetId);
