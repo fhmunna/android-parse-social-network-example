@@ -2,8 +2,8 @@ package com.example.back4app.userregistrationexample;
 
 public interface PreferenceKey {
     String MY_USER_NAME_KEY = "MY_USER_NAME_KEY";
-    String INSTRUCTION_KEY = "instruction_key";
-    String MY_NOTIFICATION_MODE = "my_notification_mode";
+    String My_PASSWORD_KEY = "My_PASSWORD_KEY";
+    String KEEP_ME_LOOGED = "KEEP_ME_LOOGED";
     String MY_SFX_SOUND_MODE = "my_sfx_sound";
     String MY_BG_SOUND_MODE = "my_bg_sound_mode";
     String MY_WON_HISTORY = "my_won_history";

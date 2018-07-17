@@ -7,7 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+
 import static com.example.back4app.userregistrationexample.PreferenceKey.ISFIRST;
+import static com.example.back4app.userregistrationexample.PreferenceKey.MY_USER_NAME_KEY;
+import static com.example.back4app.userregistrationexample.PreferenceKey.My_PASSWORD_KEY;
 import static com.example.back4app.userregistrationexample.PreferenceKey.REGISTARED;
 
 public class SplashActivity extends AppCompatActivity {
@@ -26,8 +32,20 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(intent);
 
         } else {
-            Intent intent = new Intent(SplashActivity.this, ProfileActivity.class);
-            startActivity(intent);
+
+
+            ParseUser.logInInBackground(SharedPref.read(MY_USER_NAME_KEY), SharedPref.read(My_PASSWORD_KEY), new LogInCallback() {
+                @Override
+                public void done(ParseUser user, ParseException e) {
+
+
+                    Intent intent = new Intent(SplashActivity.this, ProfileActivity.class);
+                    startActivity(intent);
+
+
+                }
+            });
+
         }
 
 
