@@ -16,6 +16,8 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.LogInCallback;
 
+import static com.example.back4app.userregistrationexample.PreferenceKey.REGISTARED;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText usernameView;
@@ -66,12 +68,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void done(ParseUser parseUser, ParseException e) {
                         if (parseUser != null) {
-                            if(parseUser.getBoolean("emailVerified")) {
+                            if (parseUser.getBoolean("emailVerified")) {
                                 dlg.dismiss();
                                 alertDisplayer("Login Sucessful", "Welcome, " + parseUser.getUsername().toString() + "!", false);
-                            }
-                            else
-                            {
+                            } else {
                                 ParseUser.logOut();
                                 dlg.dismiss();
                                 alertDisplayer("Login Fail", "Please Verify Your Email first", true);
@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void alertDisplayer(String title,String message, final boolean error){
+    private void alertDisplayer(String title, String message, final boolean error) {
         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this)
                 .setTitle(title)
                 .setMessage(message)
@@ -113,10 +113,25 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        if(!error) {
-                            Intent intent = new Intent(LoginActivity.this, LogoutActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
+                        if (!error) {
+
+                            if (SharedPref.read(REGISTARED).equalsIgnoreCase("false")) {
+
+//                            Intent intent = new Intent(LoginActivity.this, LogoutActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, ProfileCategoryActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            } else {
+
+
+//                            Intent intent = new Intent(LoginActivity.this, LogoutActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+
+                            }
+
+
                         }
                     }
                 });
