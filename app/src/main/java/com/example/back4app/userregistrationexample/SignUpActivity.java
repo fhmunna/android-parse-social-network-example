@@ -52,7 +52,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        Parse.initialize(this);
+//        Parse.initialize(this);
 
 
         //age calculate

@@ -29,7 +29,7 @@ import static com.example.back4app.userregistrationexample.PreferenceKey.REGISTA
 
 public class Locationactivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     TextView location;
-
+    Locale loc;
 
     Spinner countrySpinner;
 
@@ -68,7 +68,9 @@ public class Locationactivity extends AppCompatActivity implements AdapterView.O
         }
         Collections.sort(countries, String.CASE_INSENSITIVE_ORDER);
 
-        Locale loc = new Locale("", deviceLocation);
+        try {
+             loc = new Locale("", deviceLocation);
+
 
 
         int j = 0;
@@ -86,11 +88,15 @@ public class Locationactivity extends AppCompatActivity implements AdapterView.O
                 break;
             }
         }
+        }catch (NullPointerException e){
+            e.printStackTrace();
+
+        }
 
 
 //        loc.getDisplayCountry();
 
-        Log.d("loc_check", loc.getDisplayCountry());
+//        Log.d("loc_check", loc.getDisplayCountry());
 
 
         countrySpinner.setOnItemSelectedListener(this);

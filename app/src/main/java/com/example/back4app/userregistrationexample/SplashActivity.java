@@ -41,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-   /*         if (SharedPref.read(KEEP_ME_LOOGED).equals("true")){
+           if (SharedPref.read(KEEP_ME_LOOGED).equals("true")){
                 ParseUser.logInInBackground(SharedPref.read(MY_USER_NAME_KEY), SharedPref.read(My_PASSWORD_KEY), new LogInCallback() {
                     @Override
                     public void done(ParseUser user, ParseException e) {
@@ -56,10 +56,10 @@ public class SplashActivity extends AppCompatActivity {
 
             }else {
 
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(intent);
+                Intent intentpool = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intentpool);
 
-            }*/
+            }
 
 
         }

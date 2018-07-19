@@ -25,9 +25,4 @@ public class Education extends ParseObject {
     public void setDescription(String description){ put("description", description);}
     public void setUserId(String userId){ put("userId", userId);}
 
-
-
-
-
-
 }
