@@ -3,71 +3,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     tools:context=".ProfileActivity">
 
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/layout_basic_info"
+        style="@style/cardViewStyleNew"
+        android:layout_height="153dp">
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp"
+            tools:layout_alignParentStart="true"
+            tools:layout_alignParentTop="true">
+
+            <TextView
+                android:id="@+id/textView012"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Welcome to my app!"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/Black"
+                android:textSize="18sp" />
 
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Welcome to my app!"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/Black"
+                android:textSize="18sp" />
 
-    <LinearLayout
-        xmlns:tools="http://schemas.android.com/tools"
+            <TextView
+                android:id="@+id/textView_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Welcome to my app!"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/Black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Welcome to my app!"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/Black"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/layouteducation"
+        style="@style/cardViewStyleNew"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="59dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <ListView
+        android:id="@+id/Education_List"
+        android:layout_width="wrap_content"
+        android:layout_height="221dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+
+        android:transcriptMode="alwaysScroll" />
+
+
+    <Button
+        android:id="@+id/addMoreEducation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp"
-        android:orientation="vertical"
-        tools:layout_alignParentTop="true"
-        tools:layout_alignParentStart="true" >
-
-        <TextView
-            android:id="@+id/textView012"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Welcome to my app!"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="18sp"
-            android:textColor="@color/Black" />
+        android:layout_height="wrap_content"
+        android:text="Add More Education" />
 
 
 
+</LinearLayout>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Welcome to my app!"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="18sp"
-            android:textColor="@color/Black" />
-
-
-
-        <TextView
-            android:id="@+id/textView_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Welcome to my app!"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="18sp"
-            android:textColor="@color/Black" />
-
-
-
-        <TextView
-            android:id="@+id/textView_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Welcome to my app!"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="18sp"
-            android:textColor="@color/Black" />
+    </android.support.v7.widget.CardView>
 
 
 
@@ -76,5 +113,4 @@
 
 
 
-    </LinearLayout>
 </RelativeLayout>

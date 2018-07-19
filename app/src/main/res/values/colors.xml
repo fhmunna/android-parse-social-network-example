@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="orange">#FFA500</color>
     <color name="toolbar_color">#2699FB</color>
+    <color name="shadow">#d0d8dc</color>
 </resources>

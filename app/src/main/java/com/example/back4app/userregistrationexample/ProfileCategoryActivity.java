@@ -194,7 +194,8 @@ public class ProfileCategoryActivity extends AppCompatActivity {
 
                 if (updateUserCategory(1)) {
                     final ParseUser currentUser = ParseUser.getCurrentUser();
-                    ParseObject education = new ParseObject("Education");
+//                    ParseObject education = new ParseObject("Education");
+                    Education education = new Education();
                     education.put("userId", currentUser.getObjectId());
                     education.put("institutionName", institutionName.getText().toString());
                     education.put("degree", degree.getText().toString());

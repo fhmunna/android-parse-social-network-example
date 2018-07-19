@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Parse.initialize(this);
+//        Parse.initialize(this);
         SharedPref.init(getApplicationContext());
 
         checkBoxKeepMeLogged = (CheckBox) findViewById(R.id.checkBoxKeepMeLogged);
@@ -79,17 +79,20 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void done(ParseUser parseUser, ParseException e) {
 
-                        if (checkBoxKeepMeLogged.isChecked()){
-                            SharedPref.write(MY_USER_NAME_KEY,usernameView.getText().toString());
-                            SharedPref.write(My_PASSWORD_KEY,passwordView.getText().toString());
-                            SharedPref.write(KEEP_ME_LOOGED,"true");
-                        }
+
 
 
                         if (parseUser != null) {
                             if (parseUser.getBoolean("emailVerified")) {
+                                if (checkBoxKeepMeLogged.isChecked()){
+                                    SharedPref.write(MY_USER_NAME_KEY,usernameView.getText().toString());
+                                    SharedPref.write(My_PASSWORD_KEY,passwordView.getText().toString());
+                                    SharedPref.write(KEEP_ME_LOOGED,"true");
+                                }
                                 dlg.dismiss();
                                 alertDisplayer("Login Sucessful", "Welcome, " + parseUser.getUsername().toString() + "!", false);
+
+
                             } else {
                                 ParseUser.logOut();
                                 dlg.dismiss();
