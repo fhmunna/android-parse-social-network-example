@@ -1,5 +1,6 @@
 package com.example.back4app.userregistrationexample;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -32,26 +33,37 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView textView_username;
     TextView textView_password;
     ListView Education_List;
     ListView Experience_List;
+
     RecyclerView recycler_academic_list;
+    RecyclerView recycler_experience_list;
+
+
     ArrayList<Education> mEducation;
     ArrayList<Experience> mExperience;
 
     EducationReAdaptere meReAdapter;
+    ExperienceReadapter mexReAdapter;
+
     EducationAdapter meAdapter;
     ExperienceAdapter mexAdapter;
+
     Button addMoreEducation;
     Button addMoreExperience;
+    Button home_btn;
+    Button friend_btn;
+    Button chat_btn;
+    Button logout_btn;
+
     int width;
     int height;
     boolean currentInstitutionStatus = true;
     boolean currentJobStatus = true;
-
 
 
     @Override
@@ -67,26 +79,35 @@ public class ProfileActivity extends AppCompatActivity {
 
         addMoreEducation = (Button) findViewById(R.id.addMoreEducation);
         addMoreExperience = (Button) findViewById(R.id.addMoreExperience);
+        logout_btn = (Button) findViewById(R.id.logout_btn);
+        chat_btn = (Button) findViewById(R.id.chat_btn);
+        friend_btn = (Button) findViewById(R.id.friend_btn);
+        home_btn = (Button) findViewById(R.id.home_btn);
+
+
         mEducation = new ArrayList<Education>();
         mExperience = new ArrayList<Experience>();
 
-        Education_List = (ListView) findViewById(R.id.Education_List);
-        Experience_List = (ListView) findViewById(R.id.Experience_List);
+/*        Education_List = (ListView) findViewById(R.id.Education_List);
+        Experience_List = (ListView) findViewById(R.id.Experience_List);*/
 
         recycler_academic_list = (RecyclerView) findViewById(R.id.recycler_academic_list);
+        recycler_experience_list = (RecyclerView) findViewById(R.id.recycler_experience_list);
 
         pullEducation();
-
         pullExperience();
 
-
-
-        meReAdapter = new EducationReAdaptere(this,mEducation);
+        meReAdapter = new EducationReAdaptere(this, mEducation);
         recycler_academic_list.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recycler_academic_list.setLayoutManager(layoutManager);
         recycler_academic_list.setAdapter(meReAdapter);
 
+        mexReAdapter = new ExperienceReadapter(this, mExperience);
+        recycler_experience_list.setHasFixedSize(true);
+        RecyclerView.LayoutManager experiencelayoutManager = new LinearLayoutManager(this);
+        recycler_experience_list.setLayoutManager(experiencelayoutManager);
+        recycler_experience_list.setAdapter(mexReAdapter);
 
 
 /*
@@ -94,21 +115,25 @@ public class ProfileActivity extends AppCompatActivity {
         Experience_List.setScrollContainer(false);
 */
 
-
+/*
         justifyListViewHeightBasedOnChildren(Education_List);
-        justifyListViewHeightBasedOnChildren(Experience_List);
+        justifyListViewHeightBasedOnChildren(Experience_List);*/
 
         textView_username = (TextView) findViewById(R.id.textView_username);
         textView_password = (TextView) findViewById(R.id.textView_password);
 
+/*
         meAdapter = new EducationAdapter(ProfileActivity.this, mEducation);
         mexAdapter = new ExperienceAdapter(ProfileActivity.this, mExperience);
 
+*/
 
 
+/*
 
         Education_List.setAdapter(meAdapter);
         Experience_List.setAdapter(mexAdapter);
+*/
 
         final ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
@@ -119,9 +144,6 @@ public class ProfileActivity extends AppCompatActivity {
         } else {
             // show the signup or login screen
         }
-
-
-
 
 
         addMoreEducation.setOnClickListener(new View.OnClickListener() {
@@ -145,6 +167,49 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
+        home_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent homeIntent = new Intent(ProfileActivity.this,HomeActivity.class);
+                startActivity(homeIntent);
+
+            }
+        });
+
+
+        friend_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent homeIntent = new Intent(ProfileActivity.this,FriendListActivity.class);
+                startActivity(homeIntent);
+
+            }
+        });
+
+
+        chat_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+/*
+                Intent homeIntent = new Intent(ProfileActivity.this,ChatActivity.class);
+                startActivity(homeIntent);*/
+
+            }
+        });
+
+
+        logout_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
     }
 
     private void pullEducation() {
@@ -160,7 +225,7 @@ public class ProfileActivity extends AppCompatActivity {
                     for (Education edu : objects) {
                         mEducation.add(edu);
                     }
-                    meAdapter.notifyDataSetChanged();
+//                    meAdapter.notifyDataSetChanged();
                     meReAdapter.notifyDataSetChanged();
 
                 }
@@ -183,11 +248,11 @@ public class ProfileActivity extends AppCompatActivity {
                 Log.d("adapter_chk", "hoy ");
                 Log.d("adapter_chk", String.valueOf(objects.size()));
                 for (Experience exp : objects) {
-
                     Log.d("adapter_chk", exp.getCompanyName().toString());
                     mExperience.add(exp);
                 }
-                mexAdapter.notifyDataSetChanged();
+//                mexAdapter.notifyDataSetChanged();
+                mexReAdapter.notifyDataSetChanged();
 
             }
         });
@@ -413,7 +478,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
-    public void justifyListViewHeightBasedOnChildren (ListView listView) {
+    public void justifyListViewHeightBasedOnChildren(ListView listView) {
 
         ListAdapter adapter = listView.getAdapter();
 
@@ -435,4 +500,17 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.addMoreEducation:
+                openEduAddDialog();
+                break;
+            case R.id.addMoreExperience:
+                openExpAddDialog();
+                break;
+
+        }
+
+    }
 }

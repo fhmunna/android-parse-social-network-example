@@ -1,205 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".ProfileActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ProfileActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-
-
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/layout_basic_info"
-        style="@style/cardViewStyleNew"
-        android:layout_height="153dp">
-
-        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp"
-            tools:layout_alignParentStart="true"
-            tools:layout_alignParentTop="true">
-
-            <TextView
-                android:id="@+id/textView012"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Welcome to my app!"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/Black"
-                android:textSize="18sp" />
-
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Welcome to my app!"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/Black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Welcome to my app!"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/Black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Welcome to my app!"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/Black"
-                android:textSize="18sp" />
-
-
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
-
-
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/layoutexperience"
-        style="@style/cardViewStyleNew"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="59dp">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
-            <ListView
-                android:id="@+id/Experience_List"
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.CardView
+                android:id="@+id/layout_basic_info"
+                style="@style/cardViewStyleNew"
+                android:layout_height="153dp">
+
+                <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="16dp"
+                    tools:layout_alignParentStart="true"
+                    tools:layout_alignParentTop="true">
+
+                    <TextView
+                        android:id="@+id/textView012"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Welcome to my app!"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/Black"
+                        android:textSize="18sp" />
+
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Welcome to my app!"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/Black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Welcome to my app!"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/Black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Welcome to my app!"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/Black"
+                        android:textSize="18sp" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/layoutexperience"
+                style="@style/cardViewStyleNew"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:transcriptMode="disabled"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="59dp">
 
-                />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
 
-            <Button
-                android:id="@+id/addMoreExperience"
-                android:layout_width="match_parent"
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_experience_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="5dp"></android.support.v7.widget.RecyclerView>
+
+
+                    <Button
+                        android:id="@+id/addMoreExperience"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add More Experience" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/layouteducation_0"
+                style="@style/cardViewStyleNew"
                 android:layout_height="wrap_content"
-                android:text="Add More Experience" />
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="59dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_academic_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="5dp"></android.support.v7.widget.RecyclerView>
 
 
-        </LinearLayout>
+                    <Button
+                        android:id="@+id/addMoreEducation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add More Education" />
 
-    </android.support.v7.widget.CardView>
+                </LinearLayout>
 
+            </android.support.v7.widget.CardView>
 
-
-
-
-
-
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/layouteducation_0"
-            style="@style/cardViewStyleNew"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="59dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recycler_academic_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="5dp">
-                </android.support.v7.widget.RecyclerView>
-
+                android:orientation="horizontal">
 
 
                 <Button
-                    android:id="@+id/addMoreEducation"
-                    android:layout_width="match_parent"
+                    android:id="@+id/home_btn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add More Education" />
+                    android:text="Home" />
+
+                <Button
+                    android:id="@+id/friend_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Friend" />
+
+                <Button
+                    android:id="@+id/chat_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chat" />
+
+                <Button
+                    android:id="@+id/logout_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LogOut" />
+
 
             </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-
-<!--    <android.support.v7.widget.CardView
-        android:id="@+id/layouteducation"
-        style="@style/cardViewStyleNew"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="59dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <ListView
-                android:id="@+id/Education_List"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-
-                android:transcriptMode="disabled" />
-
-
-            <Button
-                android:id="@+id/addMoreEducation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add More Education" />
 
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>-->
-
-    </LinearLayout>
 
     </ScrollView>
 

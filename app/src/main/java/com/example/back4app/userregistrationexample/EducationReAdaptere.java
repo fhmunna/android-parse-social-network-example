@@ -18,22 +18,16 @@ public class EducationReAdaptere extends RecyclerView.Adapter<EducationReAdapter
     private List<Education> meducation;
     int itemIndex = 0;
     private Context mContext;
-//    String monthName;
+
 
     public class EducationReAdaptereViewHolder extends RecyclerView.ViewHolder {
-/*        public TextView textviewDateNumber, textviewDayName;
-        public LinearLayout layoutItemCalender;*/
-
         public TextView institutionName;
         public TextView degree;
 
         public EducationReAdaptereViewHolder(View view) {
             super(view);
-/*            textviewDateNumber = (TextView) view.findViewById(R.id.textview_date_number);
-            textviewDayName = (TextView) view.findViewById(R.id.textview_day_name);
-            layoutItemCalender = (LinearLayout) view.findViewById(R.id.layout_item_calender);*/
 
-            institutionName = (TextView)view.findViewById(R.id.institutionName);
+            institutionName = (TextView) view.findViewById(R.id.institutionName);
             degree = (TextView) view.findViewById(R.id.degree);
 
 
@@ -44,8 +38,7 @@ public class EducationReAdaptere extends RecyclerView.Adapter<EducationReAdapter
     public EducationReAdaptere(Context context, List<Education> education) {
         this.mContext = context;
         this.meducation = education;
-/*        this.dateDoctorPatients = dateDoctorPatients;
-        this.monthName = monthName;*/
+
     }
 
     @Override
@@ -61,40 +54,6 @@ public class EducationReAdaptere extends RecyclerView.Adapter<EducationReAdapter
         final Education education = meducation.get(position);
         holder.institutionName.setText(education.getInstitutionName());
         holder.degree.setText(education.getDegree());
-
-
-/*
-        holder.layoutItemCalender.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                itemIndex = position;
-                int[] location = new int[2];
-                int top = holder.layoutItemCalender.getTop();
-                Log.d("llooccaattiioonn",String.valueOf(itemIndex));
-                if (mContext instanceof DoctorHomePageActivity) {
-                    ((DoctorHomePageActivity) mContext).getdatefromsideBar(dateDoctorPatient.getmDateNumber(), dateDoctorPatient.getmDayName(),dateDoctorPatient.getmDateMonth(),top,itemIndex);
-
-                }
-                notifyDataSetChanged();
-            }
-
-        });
-*/
-
-/*        if (position == 0) {
-            holder.textviewDateNumber.setTextColor(Color.parseColor("#FFFFFF"));
-            holder.textviewDayName.setTextColor(Color.parseColor("#FFFFFF"));
-        }
-
-        if (itemIndex == position) {
-            holder.textviewDateNumber.setTextColor(Color.parseColor("#FFFFFF"));
-            holder.textviewDayName.setTextColor(Color.parseColor("#FFFFFF"));
-
-        } else {
-            holder.textviewDateNumber.setTextColor(Color.parseColor("#7B888E"));
-            holder.textviewDayName.setTextColor(Color.parseColor("#7B888E"));
-        }*/
-
 
 
     }
