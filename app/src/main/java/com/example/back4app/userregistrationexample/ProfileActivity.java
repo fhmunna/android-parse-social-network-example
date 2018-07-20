@@ -171,7 +171,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(View view) {
 
-                Intent homeIntent = new Intent(ProfileActivity.this,HomeActivity.class);
+                Intent homeIntent = new Intent(ProfileActivity.this,PostActivity.class);
                 startActivity(homeIntent);
 
             }
@@ -194,9 +194,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(View view) {
 
-/*
                 Intent homeIntent = new Intent(ProfileActivity.this,ChatActivity.class);
-                startActivity(homeIntent);*/
+                startActivity(homeIntent);
 
             }
         });

@@ -28,7 +28,4 @@ public class Experience extends ParseObject {
     public void setTitle(String title){put("title",title);}
     public void setJobDescription(String jobdescription){put("jobdescription",jobdescription);}
 
-
-
-
 }
