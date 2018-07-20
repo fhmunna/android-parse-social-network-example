@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_basic_info"
+    style="@style/cardViewStyleNew"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/employeeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Copmpany" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Company Name"
+                    android:textColor="@color/Black" />
+
+                <EditText
+                    android:id="@+id/companyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Job Title"
+                    android:textColor="@color/Black" />
+
+                <EditText
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/textView33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comapny location"
+                    android:textColor="@color/Black" />
+
+                <EditText
+                    android:id="@+id/location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+
+                <TextView
+                    android:id="@+id/textView333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Industry"
+                    android:textColor="@color/Black" />
+
+                <EditText
+                    android:id="@+id/industry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+
+
+                <TextView
+                    android:id="@+id/textView_som0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Starting date"
+                    android:textColor="@color/Black" />
+
+                <EditText
+                    android:id="@+id/jobstartingDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Click Here to set date"
+                    android:maxLines="1"
+
+                    android:singleLine="true" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/textView44"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I currently Work here"
+                        android:textColor="@color/Black" />
+
+                    <CheckBox
+                        android:id="@+id/isCurrentJob"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/jobendingLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textView55"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text="endingDate"
+                        android:textColor="@color/Black" />
+
+                    <EditText
+                        android:id="@+id/jobendingDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Click Here to set date"
+                        android:maxLines="1"
+
+                        android:singleLine="true" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/textView66"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="description"
+                    android:textColor="@color/Black" />
+
+                <EditText
+                    android:id="@+id/jobdescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+
+                <Button
+                    android:id="@+id/profile_category_save_button_job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="save"
+                    android:textColor="@color/Black"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

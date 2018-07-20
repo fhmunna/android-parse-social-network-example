@@ -48,6 +48,7 @@ public class ProfileCategoryActivity extends AppCompatActivity {
     EditText companyName;
     EditText title;
     EditText location;
+    EditText industry;
     EditText jobstartingDate;
     CheckBox isCurrentJob;
     EditText jobendingDate;
@@ -94,6 +95,7 @@ public class ProfileCategoryActivity extends AppCompatActivity {
         companyName = (EditText) findViewById(R.id.companyName);
         title = (EditText) findViewById(R.id.title);
         location = (EditText) findViewById(R.id.location);
+        industry = (EditText) findViewById(R.id.industry);
         jobstartingDate = (EditText) findViewById(R.id.jobstartingDate);
         isCurrentJob = (CheckBox) findViewById(R.id.isCurrentJob);
         jobendingDate = (EditText) findViewById(R.id.jobendingDate);
@@ -140,11 +142,13 @@ public class ProfileCategoryActivity extends AppCompatActivity {
 
                 if (updateUserCategory(2)) {
                     final ParseUser currentUser = ParseUser.getCurrentUser();
-                    ParseObject experience = new ParseObject("Experience");
+//                    ParseObject experience = new ParseObject("Experience");
+                    Experience experience = new Experience();
                     experience.put("userId", currentUser.getObjectId());
                     experience.put("companyName", companyName.getText().toString());
                     experience.put("title", title.getText().toString());
                     experience.put("location", location.getText().toString());
+                    experience.put("industry", industry.getText().toString());
                     experience.put("jobstartingDate", jobstartingDate.getText().toString());
                     if (currentJobStatus){
                         experience.put("isCurrentJob", "1");
@@ -194,7 +198,8 @@ public class ProfileCategoryActivity extends AppCompatActivity {
 
                 if (updateUserCategory(1)) {
                     final ParseUser currentUser = ParseUser.getCurrentUser();
-                    ParseObject education = new ParseObject("Education");
+//                    ParseObject education = new ParseObject("Education");
+                    Education education = new Education();
                     education.put("userId", currentUser.getObjectId());
                     education.put("institutionName", institutionName.getText().toString());
                     education.put("degree", degree.getText().toString());
@@ -213,6 +218,8 @@ public class ProfileCategoryActivity extends AppCompatActivity {
                         public void done(ParseException e) {
                             if (e == null) {
 
+
+                                Log.d("CAT", "cat intent block");
                                 Intent intent = new Intent(ProfileCategoryActivity.this, Locationactivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
