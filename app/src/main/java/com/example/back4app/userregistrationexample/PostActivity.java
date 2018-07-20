@@ -1,6 +1,7 @@
 package com.example.back4app.userregistrationexample;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -60,6 +61,18 @@ public class PostActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public void postLoader(String objecId) {
+
+
+        Intent intent = new Intent(PostActivity.this, FullPostActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("key_object_id", objecId);
+//        bundle.putBoolean("key_2", true);
+        intent.putExtras(bundle);
+        startActivity(intent);
 
     }
 

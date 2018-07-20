@@ -44,7 +44,8 @@
             android:label="@string/title_activity_home" />
         <activity android:name=".FriendListActivity" />
         <activity android:name=".ChatActivity" />
-        <activity android:name=".PostActivity"></activity>
+        <activity android:name=".PostActivity" />
+        <activity android:name=".FullPostActivity"></activity>
     </application>
 
 </manifest>
