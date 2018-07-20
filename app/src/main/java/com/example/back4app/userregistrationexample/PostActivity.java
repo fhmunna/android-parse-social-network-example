@@ -71,6 +71,7 @@ public class PostActivity extends AppCompatActivity {
             query.findInBackground(new FindCallback<Post>() {
                 @Override
                 public void done(List<Post> objects, ParseException e) {
+                    mPostList.clear();
                     Log.d("adapter_chk", "hoy ");
                     Log.d("adapter_chk", String.valueOf(objects.size()));
                     for (Post post : objects) {
