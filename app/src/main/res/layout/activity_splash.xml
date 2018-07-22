@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
 
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RefLex"
+        android:textSize="100sp"
+        android:gravity="center"
+        android:paddingTop="100dp"/>
+
+
+
 </android.support.constraint.ConstraintLayout>

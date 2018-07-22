@@ -50,8 +50,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     EducationReAdaptere meReAdapter;
     ExperienceReadapter mexReAdapter;
 
-    EducationAdapter meAdapter;
-    ExperienceAdapter mexAdapter;
 
     Button addMoreEducation;
     Button addMoreExperience;
@@ -122,11 +120,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         textView_username = (TextView) findViewById(R.id.textView_username);
         textView_password = (TextView) findViewById(R.id.textView_password);
 
-/*
-        meAdapter = new EducationAdapter(ProfileActivity.this, mEducation);
-        mexAdapter = new ExperienceAdapter(ProfileActivity.this, mExperience);
-
-*/
 
 
 /*
