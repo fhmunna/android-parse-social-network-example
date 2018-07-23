@@ -32,20 +32,21 @@
         <activity android:name=".ProfileCategoryActivity" />
         <activity android:name=".Locationactivity" />
         <activity android:name=".ProfileActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
-
-        </activity>
-        <activity android:name=".SplashActivity">
-       <!--     <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+        </activity>
+        <activity android:name=".SplashActivity">
+
+            <!--
+                <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".HomeActivity"
@@ -53,7 +54,8 @@
         <activity android:name=".FriendListActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".PostActivity" />
-        <activity android:name=".FullPostActivity"></activity>
+        <activity android:name=".FullPostActivity" />
+        <activity android:name=".FriendProfileActivity"></activity>
     </application>
 
 </manifest>

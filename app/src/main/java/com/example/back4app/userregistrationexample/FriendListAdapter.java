@@ -23,7 +23,7 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Fr
     }
 
 
-    public class FriendListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class FriendListViewHolder extends RecyclerView.ViewHolder  {
         public TextView text_view_friend;
 
         public FriendListViewHolder(View view) {
@@ -32,10 +32,7 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Fr
             text_view_friend = (TextView) view.findViewById(R.id.text_view_friend);
         }
 
-        @Override
-        public void onClick(View view) {
-            mOnItemClick.itemClick(getAdapterPosition());
-        }
+
     }
 
 
@@ -50,11 +47,18 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Fr
     }
 
     @Override
-    public void onBindViewHolder(FriendListViewHolder holder, int position) {
+    public void onBindViewHolder(FriendListViewHolder holder, final int position) {
         final Friend friend = mFriend.get(position);
 
 
         holder.text_view_friend.setText(friend.getFriendId());
+
+        holder.text_view_friend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOnItemClick.itemClick(position,friend.getFriendId());
+            }
+        });
 
     }
 
@@ -65,6 +69,6 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Fr
     }
 
     interface OnItemClick{
-         void itemClick(int index);
+         void itemClick(int index,String profileId);
     }
 }

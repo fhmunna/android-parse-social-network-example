@@ -244,7 +244,11 @@ private void alertDisplayer(String title,String message, final boolean error){
                     object.put("phone", et_phone.getText().toString());
                     object.put("dob", et_dob.getText().toString());
                     object.put("profileType", "0");
+                    object.put("rate",0.0);
                     object.saveInBackground();
+
+
+
 
                     Log.d("size ", "Ok");
                 } else {

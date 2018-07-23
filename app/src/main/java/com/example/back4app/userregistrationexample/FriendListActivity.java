@@ -1,5 +1,6 @@
 package com.example.back4app.userregistrationexample;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -23,6 +24,8 @@ public class FriendListActivity extends AppCompatActivity implements FriendListA
     RecyclerView recycler_friend_list;
     ArrayList<Friend> mFriend= new ArrayList<>();;
     FriendListAdapter mFrindListAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,9 +104,15 @@ public class FriendListActivity extends AppCompatActivity implements FriendListA
 
 
     @Override
-    public void itemClick(int index) {
+    public void itemClick(int index,String objecId) {
 
+      Log.d("item", String.valueOf(index));
 
+        Intent profileIntent = new Intent(FriendListActivity.this,FriendProfileActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("key_object_id", objecId);
+        profileIntent.putExtras(bundle);
+        startActivity(profileIntent);
 
     }
 }
