@@ -21,7 +21,7 @@ public class FriendListActivity extends AppCompatActivity implements FriendListA
 
 
     RecyclerView recycler_friend_list;
-    ArrayList<Friend> mFriend;
+    ArrayList<Friend> mFriend= new ArrayList<>();;
     FriendListAdapter mFrindListAdapter;
 
     @Override
@@ -32,13 +32,18 @@ public class FriendListActivity extends AppCompatActivity implements FriendListA
         recycler_friend_list=(RecyclerView) findViewById(R.id.friend_recycler_view);
 
       //  putFriends();
-        pullFriends();
+
 
         mFrindListAdapter = new FriendListAdapter(this, mFriend,this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recycler_friend_list.setLayoutManager(layoutManager);
         recycler_friend_list.setItemAnimator(new DefaultItemAnimator());
         recycler_friend_list.setAdapter(mFrindListAdapter);
+
+
+
+
+        pullFriends();
 /*
         mAdapter = new MoviesAdapter(movieList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
