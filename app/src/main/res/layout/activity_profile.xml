@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:orientation="vertical"
     tools:context=".ProfileActivity">
@@ -23,18 +24,18 @@
                 style="@style/cardViewStyleNew"
                 android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/profile"/>
+                    android:orientation="vertical">
 
-                <TextView
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/profile" />
+
+                    <TextView
                         android:id="@+id/textView_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -59,7 +60,37 @@
 
             </android.support.v7.widget.CardView>
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view_rating"
+                style="@style/cardViewStyleNew"
+                android:layout_height="80dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/text_view_rating"
+                        style="@style/TextAppearance.AppCompat.Large"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="0.00" />
 
+                    <com.iarcuschin.simpleratingbar.SimpleRatingBar
+                        android:id="@+id/ratingBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        app:srb_borderColor="@color/material_red500"
+                        app:srb_fillColor="@color/material_red300"
+                        app:srb_pressedBorderColor="@color/material_redA400"
+                        app:srb_pressedFillColor="@color/material_redA200" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
                 android:id="@+id/layoutexperience"
                 style="@style/cardViewStyleNew"

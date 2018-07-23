@@ -23,6 +23,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -33,7 +34,7 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
+public class ProfileActivity extends AppCompatActivity implements View.OnClickListener ,SimpleRatingBar.OnRatingBarChangeListener{
 
     TextView textView_username;
     TextView textView_password;
@@ -63,11 +64,16 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     boolean currentInstitutionStatus = true;
     boolean currentJobStatus = true;
 
+    SimpleRatingBar simpleRatingBar;
+    TextView textViewRating;
 
+
+    String text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
 
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -81,6 +87,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         chat_btn = (Button) findViewById(R.id.chat_btn);
         friend_btn = (Button) findViewById(R.id.friend_btn);
         home_btn = (Button) findViewById(R.id.home_btn);
+
+        //rating bar
+        simpleRatingBar = (SimpleRatingBar) findViewById(R.id.ratingBar);
+        textViewRating = (TextView) findViewById(R.id.text_view_rating);
+        simpleRatingBar.setOnRatingBarChangeListener(this);
 
 
         mEducation = new ArrayList<Education>();
@@ -505,4 +516,61 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
 
     }
+
+    @Override
+    public void onRatingChanged(SimpleRatingBar simpleRatingBar, float rating, boolean fromUser) {
+        text = String.format("%.1f", rating);
+        textViewRating.setText(text);
+
+    }
+
+
+
+    private void putRating() {
+
+        final ParseUser currentUser = ParseUser.getCurrentUser();
+
+        Rating  rating = new Rating();
+      //  rating.setRatingReference();
+        rating.setRatingProvider(currentUser.getObjectId());
+        rating.setRatingValue(text);
+        rating.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+
+
+
+                }
+            }
+        });
+
+    }
+
+ /*   private void pullComment() {
+
+        final ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            ParseQuery<Comment> query = ParseQuery.getQuery(Comment.class);
+            query.whereEqualTo("ratingReference", key_object_id);
+            query.findInBackground(new FindCallback<Comment>() {
+                @Override
+                public void done(List<Comment> objects, ParseException e) {
+                    commentList.clear();
+                    for (Comment comment : objects) {
+                        commentList.add(comment);
+                    }
+
+                    mCommentAdapter.notifyDataSetChanged();
+
+                }
+            });
+
+        } else {
+            // show the signup or login screen
+        }
+
+
+    }*/
+
 }

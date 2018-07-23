@@ -26,6 +26,9 @@ public class App extends Application {
             ParseObject.registerSubclass(Post.class);
             ParseObject.registerSubclass(Like.class);
             ParseObject.registerSubclass(Comment.class);
+            ParseObject.registerSubclass(Rating.class);
+            ParseObject.registerSubclass(Friend.class);
+
             Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
                     .applicationId("QN0K6MGBw2GOXPdfZSnJuFYRk1gYVCBSIaTl6tFP")
                     .clientKey("kgDhMbCkZwuOX03ES2wPzA48JxrfhoAXDvDJpULh")
