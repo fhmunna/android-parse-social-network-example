@@ -53,6 +53,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     public void onBindViewHolder(final PostViewHolder holder, final int position) {
         final Post post = mPost.get(position);
         holder.postBody.setText(post.getBody());
+
         holder.layout_post_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

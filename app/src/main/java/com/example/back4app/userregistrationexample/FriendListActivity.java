@@ -19,10 +19,11 @@ import java.util.List;
 
 public class FriendListActivity extends AppCompatActivity implements FriendListAdapter.OnItemClick {
 
-
+String st;
     RecyclerView recycler_friend_list;
     ArrayList<Friend> mFriend= new ArrayList<>();;
-    FriendListAdapter mFrindListAdapter;
+    FriendListAdapterT mFrindListAdapter;
+    ArrayList<String> mFriendName = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class FriendListActivity extends AppCompatActivity implements FriendListA
       //  putFriends();
 
 
-        mFrindListAdapter = new FriendListAdapter(this, mFriend,this);
+        mFrindListAdapter = new FriendListAdapterT(this, mFriendName);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recycler_friend_list.setLayoutManager(layoutManager);
         recycler_friend_list.setItemAnimator(new DefaultItemAnimator());
@@ -76,18 +77,24 @@ public class FriendListActivity extends AppCompatActivity implements FriendListA
         final ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
            ParseQuery<Friend> query = ParseQuery.getQuery(Friend.class);
-            query.whereEqualTo("userId", "OnEJNsUbGI");
+            query.whereEqualTo("userId",currentUser.getObjectId().toString());
             query.findInBackground(new FindCallback<Friend>() {
                 @Override
                 public void done(List<Friend> objects, ParseException e) {
                     mFriend.clear();
-                    Log.d("adapter_chk", "hoy ");
+                    Log.d("adapter_chk", "hoy hh");
                     Log.d("adapter_chk", String.valueOf(objects.size()));
                     for (Friend friend : objects) {
+
+                        Log.d("adapter_chk", String.valueOf(friend.getFriendId().toString()));
+                        getUsernameById(friend.getFriendId().toString());
+
+
+
                         mFriend.add(friend);
                     }
 //                    meAdapter.notifyDataSetChanged();
-                    mFrindListAdapter.notifyDataSetChanged();
+//                    mFrindListAdapter.notifyDataSetChanged();
 
                 }
             });
@@ -95,13 +102,57 @@ public class FriendListActivity extends AppCompatActivity implements FriendListA
         } else {
             // show the signup or login screen
         }
+    }
+
+    @Override
+    public void itemClick(int index) {
+    }
+
+
+
+    private void getUsernameById(String objectId) {
+        Log.d("adapter_chk", objectId);
+
+
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereEqualTo("objectId", objectId);
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> objects, ParseException e) {
+                if (e == null) {
+                    // The query was successful.
+
+                    Log.d("adapter_chk", String.valueOf(objects.size()));
+
+                    for (ParseUser usr : objects) {
+
+                        Log.d("adapter_chk", String.valueOf(usr.getUsername()));
+
+//                        st= usr.getUsername();
+
+                        mFriendName.add(usr.getUsername());
+
+
+
+                    }
+
+
+                } else {
+                    // Something went wrong.
+                    Log.d("adapter_chk", e.toString());
+                }
+            }
+        });
+
+
+        Log.d("adapter_chk00", String.valueOf(mFriendName.size()));
+
+        mFrindListAdapter.notifyDataSetChanged();
 
 
     }
 
+    public void profileLoader(String s) {
 
-    @Override
-    public void itemClick(int index) {
 
 
 

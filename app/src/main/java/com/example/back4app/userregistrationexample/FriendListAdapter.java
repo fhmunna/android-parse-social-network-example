@@ -2,21 +2,27 @@ package com.example.back4app.userregistrationexample;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import java.util.List;
 
 public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.FriendListViewHolder> {
-    private List<Friend> mFriend;
+    private List<String> mFriend;
     private Context mContext;
-
+    String st;
     private  OnItemClick mOnItemClick;
 
-    public FriendListAdapter(Context context, List<Friend> friends,OnItemClick onItemClick ) {
+    public FriendListAdapter(Context context, List<String> friends,OnItemClick onItemClick ) {
         this.mContext = context;
         this.mFriend = friends;
         this.mOnItemClick=onItemClick;
@@ -50,11 +56,19 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Fr
     }
 
     @Override
-    public void onBindViewHolder(FriendListViewHolder holder, int position) {
-        final Friend friend = mFriend.get(position);
+    public void onBindViewHolder(final FriendListViewHolder holder, int position) {
+        final String friend = mFriend.get(position);
 
 
-        holder.text_view_friend.setText(friend.getFriendId());
+
+                    holder.text_view_friend.setText(friend);
+
+
+
+
+
+
+
 
     }
 
@@ -67,4 +81,10 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Fr
     interface OnItemClick{
          void itemClick(int index);
     }
+
+
+
+
+
+
 }
