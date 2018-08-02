@@ -24,6 +24,8 @@ public class EducationReAdaptere extends RecyclerView.Adapter<EducationReAdapter
         public TextView institutionName;
         public TextView degree;
 
+
+
         public EducationReAdaptereViewHolder(View view) {
             super(view);
 
