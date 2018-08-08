@@ -24,8 +24,7 @@ import com.parse.SaveCallback;
 import java.util.List;
 
 public class LogoutActivity extends AppCompatActivity {
-    TextView textView_username;
-    TextView textView_password;
+
     Button update_button;
 
     String fName, lName;
@@ -38,20 +37,17 @@ public class LogoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_logout);
 
 
+<<<<<<< HEAD
         textView_username = (TextView) findViewById(R.id.textView_username);
         textView_password = (TextView) findViewById(R.id.textView_password);
 //        et_first_name = (EditText) findViewById(R.id.et_first_name);
 //        et_last_name = (EditText) findViewById(R.id.et_last_name);
+=======
 
-        final ParseUser currentUser = ParseUser.getCurrentUser();
-        if (currentUser != null) {
-            // do stuff with the user
-            textView_username.setText(currentUser.getUsername());
-            textView_password.setText(currentUser.getObjectId());
+>>>>>>> f84874378717e1243236ee18647f1377c1773d82
 
-        } else {
-            // show the signup or login screen
-        }
+
+
 
 
 //        update_button = (Button) findViewById(R.id.update_button);

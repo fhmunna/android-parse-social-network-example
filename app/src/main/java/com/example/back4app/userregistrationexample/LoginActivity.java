@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Button;
@@ -16,16 +17,28 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.LogInCallback;
 
+import static com.example.back4app.userregistrationexample.PreferenceKey.KEEP_ME_LOOGED;
+import static com.example.back4app.userregistrationexample.PreferenceKey.MY_USER_NAME_KEY;
+import static com.example.back4app.userregistrationexample.PreferenceKey.My_PASSWORD_KEY;
+import static com.example.back4app.userregistrationexample.PreferenceKey.REGISTARED;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText usernameView;
     private EditText passwordView;
+    private CheckBox checkBoxKeepMeLogged;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Parse.initialize(this);
+//        Parse.initialize(this);
+        SharedPref.init(getApplicationContext());
+
+        checkBoxKeepMeLogged = (CheckBox) findViewById(R.id.checkBoxKeepMeLogged);
+
+
+
 
         usernameView = (EditText) findViewById(R.id.username);
         passwordView = (EditText) findViewById(R.id.password);
@@ -65,13 +78,22 @@ public class LoginActivity extends AppCompatActivity {
                 ParseUser.logInInBackground(usernameView.getText().toString(), passwordView.getText().toString(), new LogInCallback() {
                     @Override
                     public void done(ParseUser parseUser, ParseException e) {
+
+
+
+
                         if (parseUser != null) {
-                            if(parseUser.getBoolean("emailVerified")) {
+                            if (parseUser.getBoolean("emailVerified")) {
+                                if (checkBoxKeepMeLogged.isChecked()){
+                                    SharedPref.write(MY_USER_NAME_KEY,usernameView.getText().toString());
+                                    SharedPref.write(My_PASSWORD_KEY,passwordView.getText().toString());
+                                    SharedPref.write(KEEP_ME_LOOGED,"true");
+                                }
                                 dlg.dismiss();
                                 alertDisplayer("Login Sucessful", "Welcome, " + parseUser.getUsername().toString() + "!", false);
-                            }
-                            else
-                            {
+
+
+                            } else {
                                 ParseUser.logOut();
                                 dlg.dismiss();
                                 alertDisplayer("Login Fail", "Please Verify Your Email first", true);
@@ -105,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void alertDisplayer(String title,String message, final boolean error){
+    private void alertDisplayer(String title, String message, final boolean error) {
         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this)
                 .setTitle(title)
                 .setMessage(message)
@@ -113,10 +135,25 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        if(!error) {
-                            Intent intent = new Intent(LoginActivity.this, LogoutActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
+                        if (!error) {
+
+                            if (SharedPref.read(REGISTARED).equalsIgnoreCase("false")) {
+
+//                            Intent intent = new Intent(LoginActivity.this, LogoutActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, ProfileCategoryActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            } else {
+
+
+//                            Intent intent = new Intent(LoginActivity.this, LogoutActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+
+                            }
+
+
                         }
                     }
                 });

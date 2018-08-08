@@ -348,6 +348,24 @@
                    android:singleLine="true" />
 
 
+
+               <TextView
+                   android:id="@+id/textView333"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Industry"
+                   android:textColor="@color/Black" />
+
+               <EditText
+                   android:id="@+id/industry"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+
+                   android:maxLines="1"
+                   android:singleLine="true" />
+
+
+
                <TextView
                    android:id="@+id/textView_som0"
                    android:layout_width="wrap_content"
